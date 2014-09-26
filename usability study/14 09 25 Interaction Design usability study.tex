@@ -1,9 +1,8 @@
 \documentclass[12pt, oneside]{article}
 \usepackage{geometry}
 \geometry{letterpaper}
-\userpackage{graphicx}
-
-\userpackage{amssymb}
+\usepackage{graphicx}
+\usepackage{amssymb}
 
 \title{Interaction Design Assignment 0925}
 \author{J.B. Morris}
@@ -11,19 +10,22 @@
 
 \begin{document}
 \maketitle
+\section{Introduction}
+In this paper I will be comparing the navigation applications on the iOS platform provided by Apple and Google respectively. Multiple users were contacted and put through a series of tests on an iOS device using either or both of the applications in order to compare their performance. 
 
-
-\section{Intorduction}
 \section{Testing}
 \subsection{Steps}
-1. Ask for age. Record gender.
-2. Ask if they have used Apple Maps. For how long and how often. Repeat for Google Maps. Test them with one(s) with which they are familiar.
-3. TASK 1: Give them a screen of Los Angeles. Start timing immediately. Tell them to drop a pin anywhere on the map and get driving directions to that pin. Record errors (errors are defined as any buttons that don't get them closer to accomplishing the task).
-4. Take phone, remove pin, and center on current location.
-5. TASK 2: Tell the user to find the nearest Vons. Start timing immediately and record errors. Make it clear that they don't need to acquire directions to the Vons in question, they only need to find it.
-6. Take phone, remove previous search inquiries, center on current location.
-7. TASK 3: Find fastest (in terms of time) route—i.e., the fastest ETA—from current location to LACMA.
-8. Satisfaction survey: tell users to rate on a scale of 1 to 10 how much they enjoyed performing each task on their respective devices or systems.
+
+\begin{enumerate}
+\item Ask for age. Record gender.
+\item Ask if they have used Apple Maps. For how long and how often. Repeat for Google Maps. Test them with one(s) with which they are familiar.
+\item TASK 1: Give them a screen of Los Angeles. Start timing immediately. Tell them to drop a pin anywhere on the map and get driving directions to that pin. Record errors (errors are defined as any buttons that don't get them closer to accomplishing the task).
+\item Take phone, remove pin, and center on current location.
+\item TASK 2: Tell the user to find the nearest Von's. Start timing immediately and record errors. Make it clear that they don't need to acquire directions to the Von's in question, they only need to find it.
+\item Take phone, remove previous search inquiries, center on current location.
+\item TASK 3: Find fastest (in terms of time) route—i.e., the fastest ETA—from current location to LACMA.
+\item Satisfaction survey: tell users to rate on a scale of 1 to 10 how much they enjoyed performing each task on their respective devices or systems.
+\end{enumerate}
 
 \subsection{Data}
 
@@ -62,6 +64,8 @@ For the second test we had users to find the nearest Vons grocery store. The maj
 
 The third test required users to find LACMA (Los Angeles County Museum of Art) on their map through a quick search. In this test, Google performed significantly better than Apple. Aside from the aforementioned differences in the search bars, Apple maps had a tendency to find other related locations rather than the museum itself. In my personal observations, I noticed that Google took users straight to the museum itself with no other pins. Apple, however, dropped multiple pins in the area. These pins seemed to be dropped in shops and restaurants that were near the museum or related to it somehow, yet none of the pins fell on the museum itself. The museum is a noted location on Apple Maps, meaning if one were to see it on the map, they could tap it and get directions and info for it without needing the address or to type any information. Nevertheless, this is still an extra step for the user if the search only takes them to the general area and also counts as an error. The main issue here appears that Apple Maps was not aware of the colloquial acronym people commonly use to reference the museum (I ran a personal test to very this and it did indeed perform as intended when the user typed the full name of the museum) and Google was. This falls back into the category of the mental model users expect. They expected the search engine to be smart enough to recognize commonly used acronyms and, in the case of Apple Maps, it did not. It goes without saying that the above metrics contributed to Google receiving an overall higher score than Apple when user satisfaction was recorded. 
 
+\section{Conclusion}
+In conclusion, Google's map application was noticeably more efficient and user friendly. The traits that made it so highlight Google's attention to detail with regards to mental models. Google incorporates the subtle things such as timing after pressing a command or the ease of use of a tool within the application into their application it makes a noticeable difference. The power of a well executed mental model makes all the difference in the user experience one has with any application.
 
 
 \end{document}
