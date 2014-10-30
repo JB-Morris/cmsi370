@@ -204,6 +204,58 @@
                 </div>
             </div>
         </div>
+        <!-- Modal -->
+        <div class="modal fade" id="NewCharModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"> <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+
+                        </button>
+                        <h4 class="modal-title" id="NewCharModalLabel">New Character</h4>
+
+                    </div>
+                    <div class="modal-body">
+                        <form role="form">
+                            <div class="form-group">
+                                <label for="CharNameInput">New Character Name</label>
+                                <input type="character-name" class="form-control" id="CharNameInput" placeholder="Enter character name"/>
+                                <!-- INPUT HERE! -->
+                            </div>
+                            <div class="form-group">
+                                <label for="CharClassInput">Class</label>
+                                <input type="character-class" class="form-control" id="CharClassInput" placeholder="Class-name"/>
+                                <!-- INPUT HERE! -->
+                            </div>
+                        </form>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="optionsRadios" id="MaleRadio" value="MALE">Male</input>
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="optionsRadios" id="FemaleRadio" value="FEMALE">Female</input>
+                            </label>
+                        </div>
+                        <form role="form">
+                            <div class="form-group">
+                                <label for="InputCharLevel">Character Level</label>
+                                <input type="character-level" class="form-control-short" id="InputCharLevel" placeholder="Level">
+                                <p></p>
+                                <label for="InputCharMoney">Character Money</label>
+                                <input type="character-money" class="form-control-short" id="InputCharMoney" placeholder="0">
+                                <!-- INPUT HERE! -->
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" id="save-new-character">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="modal fade" id="EditCharModal">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -257,13 +309,13 @@
         </div>
         <!-- /.modal -->
         <!-- -->
-        <p hidden>
+        <p class="hidden">
             <img src="https://cdn4.iconfinder.com/data/icons/aiga-symbol-signs/1052/aiga_toiletsq_men-512.png" class="male avatar" />
             <img src="http://www.clker.com/cliparts/1/3/e/3/13161188601869016990Female%20Toilet%20Sign.svg.hi.png" class="female avatar" />
         </p>
 </section>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script src="//cdn.jsdelivr.net/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+<script src="//cdn.jsdelivr.net/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="RPGjavascript.js"></script>
 
 </body>
