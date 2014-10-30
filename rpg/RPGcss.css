@@ -1,0 +1,12 @@
+img.male.avatar {
+    height: 24px;
+}
+img.female.avatar {
+    height: 24px;
+}
+.form-control {
+    width: 50%
+}
+.form-control-short {
+    width: 20%
+}

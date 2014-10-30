@@ -1,0 +1,267 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8"/>
+		<title>Diabolical</title>
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+	</head>
+	<body>
+<body>
+    <section class="container">
+        <div class="row">
+            <div class="col-mid-2"></div>
+            <div class="col-mid-8">
+                <div class="title">
+                     <h1 class="text-center">Diabolical</h1>
+
+                </div>
+                <div class="col-mid-2"></div>
+            </div>
+        </div>
+        <!-- Nav tabs -->
+        <div class="row">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+                <li><a href="#items" role="tab" data-toggle="tab">Items</a>
+
+                </li>
+                <li><a href="#characters" role="tab" data-toggle="tab">Characters</a>
+
+                </li>
+                <li class="active"><a href="#home" role="tab" data-toggle="tab">Home</a>
+
+                </li>
+                <li><a href="#profile" role="tab" data-toggle="tab">Profile</a>
+
+                </li>
+                <li><a href="#help" role="tab" data-toggle="tab">Help</a>
+
+                </li>
+            </ul>
+        </div>
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div class="tab-pane" id="items">
+                <button type="button" class="btn btn-default" id="spawn-item-button">Spawn Item</button>
+            </div>
+            <div class="tab-pane" id="characters">
+                 <h3>Character Roster</h3>
+
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Name</th>
+                            <th>Class</th>
+                            <th>Gender</th>
+                            <th>Level</th>
+                            <th>Money</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+                <div class="templates hidden">
+                    <table>
+                        <tbody>
+                            <tr class="character-template">
+                                <td>
+                                    <p class="avatar-container"></p>
+                                </td>
+                                <td class="name"></td>
+                                <td class="class"></td>
+                                <td class="gender"></td>
+                                <td class="level"></td>
+                                <td class="money"></td>
+                                <td class="buttons">
+                                    <button class="btn btn-primary btn-xs ViewButtonClass" id="test" data-toggle="modal" data-target="#ViewCharModal"> <span class="glyphicon glyphicon-eye-open"></span>
+
+                                        <button class="btn btn-primary btn-xs DeleteButtonClass" id="deleteChar"> <span class="glyphicon glyphicon-trash"></span>
+
+                                        </button>
+                                        <!-- -->
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="tab-pane active" id="home">
+                <!--HOME TAB -->
+                <p></p>
+                <!-- Button trigger modal -->
+                <div class="text-center">
+                    <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#NewCharModal"> <span class="glyphicon glyphicon-plus"></span>
+Create New Character</button>
+                </div>
+                <!-- Modal -->
+                <div class="modal fade" id="NewCharModal">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal"> <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+
+                                </button>
+                                 <h4 class="modal-title" id="NewCharModalLabel">New Character</h4>
+
+                            </div>
+                            <div class="modal-body">
+                                <form role="form">
+                                    <div class="form-group">
+                                        <label for="CharNameInput">New Character Name</label>
+                                        <input type="character-name" class="form-control" id="CharNameInput" placeholder="Enter character name"></input>
+                                        <!-- INPUT HERE! -->
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="CharClassInput">Class</label>
+                                        <input type="character-class" class="form-control" id="CharClassInput" placeholder="Class-name"></input>
+                                        <!-- INPUT HERE! -->
+                                    </div>
+                                </form>
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="optionsRadios" id="MaleRadio" value="MALE">Male</input>
+                                    </label>
+                                </div>
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="optionsRadios" id="FemaleRadio" value="FEMALE">Female</input>
+                                    </label>
+                                </div>
+                                <form role="form">
+                                    <div class="form-group">
+                                        <label for="InputCharLevel">Character Level</label>
+                                        <input type="character-level" class="form-control-short" id="InputCharLevel" placeholder="Level">
+                                        <label for="InputCharMoney">Character Money</label>
+                                        <input type="character-level" class="form-control-short" id="InputCharMoney" placeholder="0">
+                                        <!-- INPUT HERE! -->
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary" id="save-new-character">Save changes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane" id="help">
+                <div class="help-header">
+                    <p>
+                         <h3>Symbols</h3>
+
+                    </p>
+                    <p> <span class="glyphicon glyphicon-plus"></span>
+This symbol denotes the creation of a new character.</p>
+                    <p> <span class="glyphicon glyphicon-eye-open"></span>
+This symbol brings up the "View Character" modal.</p>
+                    <p> <span class="glyphicon glyphicon-cog"></span>
+This symbol brings up the "Edit Character" menu.</p>
+                </div>
+            </div>
+            <div class="tab-pane" id="profile">profile information</div>
+        </div>
+        <!--VIEW CHARACTER MODAL-->
+        <div class="modal fade" id="ViewCharModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+
+                        </button>
+                         <h4 class="modal-title" id="CharCardLabel">Character Card</h4>
+
+                    </div>
+                    <div class="modal-body" id="CharacterCardModal">
+                        <p id="CharacterCard"><span></span>
+
+                        </p>
+                        <p id="CardName">Name:<span></span>
+
+                        </p>
+                        <p id="CardClass">Class:<span></span>
+
+                        </p>
+                        <p id="CardGender">Gender:<span></span>
+
+                        </p>
+                        <p id="CardLevel">Level:<span></span>
+
+                        </p>
+                        <p id="CardMoney">Money:<span></span>
+
+                        </p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" id="editCloseButton">Close</button>
+                        <button class="btn btn-primary btn-default" data-toggle="modal" data-target="#EditCharModal"> <span class="glyphicon glyphicon-cog"></span>
+
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="EditCharModal">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal"> <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+
+                            </button>
+                             <h4 class="modal-title" id="EditCharModalLabel">Edit Character</h4>
+
+                        </div>
+                        <div class="modal-body">
+                            <form role="form">
+                                <div class="form-group">
+                                    <label for="CharNameInput">New Character Name</label>
+                                    <input type="character-name" class="form-control" id="EditNameInput" placeholder=""></input>
+                                    <!-- INPUT HERE! -->
+                                </div>
+                                <div class="form-group">
+                                    <label for="CharClassInput">Class</label>
+                                    <input type="character-class" class="form-control" id="EditClassInput" placeholder=""></input>
+                                    <!-- INPUT HERE! -->
+                                </div>
+                            </form>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="optionsRadios" id="EditMaleRadio" value="MALE">Male</input>
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="optionsRadios" id="EditFemaleRadio" value="FEMALE">Female</input>
+                                </label>
+                            </div>
+                            <form role="form">
+                                <div class="form-group">
+                                    <label for="InputCharLevel">Character Level</label>
+                                    <input type="character-level" class="form-control-short" id="EditLevelInput" placeholder="Level">
+                                    <label for="InputCharMoney">Character Money</label>
+                                    <input type="character-level" class="form-control-short" id="EditMoneyInput" placeholder="0">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary" id="save-edited-character">Save changes</button>
+                        </div>
+                    </div>
+                    <!-- /.modal-content -->
+                </div>
+                <!-- /.modal-dialog -->
+            </div>
+            <!-- /.modal -->
+            <!-- -->
+            <p hidden>
+                <img src="https://cdn4.iconfinder.com/data/icons/aiga-symbol-signs/1052/aiga_toiletsq_men-512.png" class="male avatar" />
+                <img src="http://www.clker.com/cliparts/1/3/e/3/13161188601869016990Female%20Toilet%20Sign.svg.hi.png" class="female avatar" />
+            </p>
+    </section>
+    
+    <body>
+	<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	
+	</body>
+</html>
