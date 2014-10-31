@@ -37,6 +37,9 @@ $(function () {
         });
     });
 
+
+
+//Table
     $.getJSON(
         "http://lmu-diabolical.appspot.com/characters",
 
@@ -109,12 +112,12 @@ $(function () {
 
             $('#save-edited-character').click(function () {
                 var trID = $('.DeleteButtonClass').attr('id');
-                alert(trID);
-                var charInput;
-                var classInput;
-                var genderInput;
-                var charLevel;
-                var charMoney;
+                //alert(trID);
+                var charInput = character.name;
+                var classInput = character.classType;
+                var genderInput = character.gender;
+                var charLevel = character.level;
+                var charMoney = character.money;
                 var maleRadio = $('#EditMaleRadio:checked').val();
                 var femaleRadio = $('#EditFemaleRadio:checked').val();
                 if ($("#EditNameInput").val() === null) {
@@ -132,7 +135,7 @@ $(function () {
                 } else if (femaleRadio == "FEMALE") {
                     genderInput = femaleRadio;
                 } else {
-                    genderInput = null;
+                genderInput = character.gender;
                 }
                 if ($("#EditLevelInput").val() === null) {
                     charLevel = character.level;
@@ -142,8 +145,13 @@ $(function () {
                 if ($("#EditMoneyInput").val() === null) {
                     charMoney = character.money;
                 } else {
-                    charMoney = $("#EditmoneyInput").val();
+                    charMoney = $("#EditMoneyInput").val();
                 }
+                alert(charInput);
+                alert(classInput);
+                alert(genderInput);
+                alert(charLevel);
+                alert(charMoney);
 
                 $.ajax({
                     type: 'PUT',
