@@ -33,6 +33,7 @@ $(function () {
             complete: function (jqXHR, textStatus) {
                 // The new character can be accessed from the Location header.
                 console.log("You may access the new character at:" + jqXHR.getResponseHeader("Location"));
+                alert("Character created! You may create an additional character or close the modal.")
             }
         });
     });
@@ -76,6 +77,7 @@ $(function () {
                     type: 'DELETE',
                     url: "http://lmu-diabolical.appspot.com/characters/" + trID,
                     success: function (data, textStatus, jqXHR) {
+                        alert("Character Deleted");
                         console.log("Gone baby gone.");
                     }
                 });
@@ -147,11 +149,11 @@ $(function () {
                 } else {
                     charMoney = $("#EditMoneyInput").val();
                 }
-                alert(charInput);
-                alert(classInput);
-                alert(genderInput);
-                alert(charLevel);
-                alert(charMoney);
+                //alert(charInput);
+                //alert(classInput);
+                //alert(genderInput);
+                //alert(charLevel);
+                //alert(charMoney);
 
                 $.ajax({
                     type: 'PUT',
