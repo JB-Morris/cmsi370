@@ -7,7 +7,8 @@ $(function () {
         var maleRadio = $('#MaleRadio:checked').val();
         var femaleRadio = $('#FemaleRadio:checked').val();
         var genderInput;
-        if (maleRadio == "MALE") {
+        // JD: 18
+        if (maleRadio == "MALE") { // JD: 17
             genderInput = maleRadio;
         } else if (femaleRadio == "FEMALE") {
             genderInput = femaleRadio;
@@ -25,12 +26,12 @@ $(function () {
                 classType: classInput,
                 gender: genderInput,
                 level: charLevel,
-                money: 0
+                money: 0 // JD: 6 ...I guess it was intentional then?
             }),
             contentType: "application/json",
             dataType: "json",
             accept: "application/json",
-            complete: function (jqXHR, textStatus) {
+            complete: function (jqXHR, textStatus) { // JD: 4
                 // The new character can be accessed from the Location header.
                 console.log("You may access the new character at:" + jqXHR.getResponseHeader("Location"));
                 alert("Character created! You may create an additional character or close the modal.")
@@ -56,12 +57,13 @@ $(function () {
                 tr.find(".gender").text(character.gender);
                 tr.find(".level").text(character.level);
                 tr.find(".money").text(character.money);
+                // JD: 20
                 //tr.attr('id', character.id);
                 //console.log(tr.find('.buttons').children().each);
                 tr.find('.buttons').children().each(function () {
                     //console.log(character.id);
                     //console.log(this);
-                    $(this).attr('id', character.id);
+                    $(this).attr('id', character.id); // JD: 19
                 });
                 //console.log(character);
                 return tr;
@@ -69,14 +71,15 @@ $(function () {
             }));
             $('.DeleteButtonClass').click(function () {
                 var trID = $(this).attr('id');
+                // JD: 20
                 //console.log(trID);
 
-
+// JD: 21
 
                 $.ajax({
                     type: 'DELETE',
                     url: "http://lmu-diabolical.appspot.com/characters/" + trID,
-                    success: function (data, textStatus, jqXHR) {
+                    success: function (data, textStatus, jqXHR) { // JD: 4
                         alert("Character Deleted");
                         console.log("Gone baby gone.");
                     }
@@ -98,6 +101,7 @@ $(function () {
                         var cardLevel = character.level;
                         var cardMoney = character.money;
                         console.log(cardName);
+                        // JD: 22
                         $('#CardName span').html(" " + cardName);
                         $('#CardClass span').html(" " + cardClass);
                         $('#CardGender span').html(" " + cardGender);
@@ -115,18 +119,18 @@ $(function () {
             $('#save-edited-character').click(function () {
                 var trID = $('.DeleteButtonClass').attr('id');
                 //alert(trID);
-                var charInput = character.name;
+                var charInput = character.name; // JD: 3 (what is character's value?)
                 var classInput = character.classType;
                 var genderInput = character.gender;
                 var charLevel = character.level;
                 var charMoney = character.money;
                 var maleRadio = $('#EditMaleRadio:checked').val();
                 var femaleRadio = $('#EditFemaleRadio:checked').val();
-                if ($("#EditNameInput").val() === null) {
+                if ($("#EditNameInput").val() === null) { // JD: 23
                     charInput = character.name;
                 } else {
                     charInput = $("#EditNameInput").val();
-                }
+                } // JD: Consider...   charInput = $("#EditNameInput").val() || character.name;
                 if ($("#EditClassInput").val() === null) {
                     classInput = character.classType;
                 } else {
@@ -149,6 +153,7 @@ $(function () {
                 } else {
                     charMoney = $("#EditMoneyInput").val();
                 }
+                // JD: 20
                 //alert(charInput);
                 //alert(classInput);
                 //alert(genderInput);
@@ -180,7 +185,7 @@ $(function () {
 
 
 
-
+    // JD: 24
     $('#spawn-item-button').click(function () {
         alert("Item Spawned!");
     });

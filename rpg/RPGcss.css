@@ -1,8 +1,8 @@
 img.male.avatar {
     height: 24px;
-}
+} /* JD: 15 */
 img.female.avatar {
-    height: 24px;
+    height: 24px; /* JD: 16 ...consider conslidating under just img.avatar */
 }
 .form-control {
     width: 50%
