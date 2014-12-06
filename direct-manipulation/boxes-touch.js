@@ -12,6 +12,7 @@ var BoxesTouch = {
 
 
     setDrawingArea: function (jQueryElements) {
+        console.log(jQueryElements);
         // Set up any pre-existing box elements for touch behavior.
         jQueryElements
             .addClass("drawing-area")
@@ -20,21 +21,26 @@ var BoxesTouch = {
             //Adds event listener to drawing area in general
 
             //element.addEventListener("touchstart", BoxesTouch.startDraw, false);
-            .on("touchstart", BoxesTouch.setBoxIDs)
-            .on("touchstart", BoxesTouch.startDraw)
+            //.on("touchstart", BoxesTouch.setBoxIDs)
+            //.on("touchstart", BoxesTouch.startDraw)
 
             //.on("touchmove", BoxesTouch.trackDrag)
 
 
 
             .each(function (index, element) {
+                console.log(element);
                 element.addEventListener("touchmove", BoxesTouch.trackDrag, false);
                 element.addEventListener("touchend", BoxesTouch.endDrag, false);
+
+                element.addEventListener("touchstart", BoxesTouch.setBoxIDs, false);
+                element.addEventListener("touchstart", BoxesTouch.startDraw, false);
                 //.on("touchmove", BoxesTouch.trackDrag, false)
                 //.on("touchend", BoxesTouch.endDrag, false);
             })
 
             .find("div.box").each(function (index, element) {
+                console.log(element);
                 element.addEventListener("touchstart", BoxesTouch.startMove, false);
                 element.addEventListener("touchend", BoxesTouch.unhighlight, false);
                 //.on("touchstart", BoxesTouch.startMove, false);
@@ -43,7 +49,7 @@ var BoxesTouch = {
     },
 
     setBoxIDs: function(event){
-        $.each(event.originalEvent.changedTouches, function (index, touch) {
+        $.each(event.changedTouches, function (index, touch) {
             var ID = touch.identifier;
             //console.log("hello");
             //console.log(touch);
@@ -71,7 +77,7 @@ var BoxesTouch = {
 
     startDraw: function (event) {
         //setBoxIDs(event);
-        $.each(event.originalEvent.changedTouches, function (index, touch) {
+        $.each(event.changedTouches, function (index, touch) {
             if (!touch.target.movingBox) {
 
                 //console.log(this);
@@ -83,7 +89,8 @@ var BoxesTouch = {
                 drawingBoxes[boxIDs.indexOf(touch.identifier)].drawingBox = $("<div></div>")
                     .appendTo($("#drawing-area"))
                     .addClass("box")
-                    .offset({left: drawingBoxes[boxIDs.indexOf(touch.identifier)].anchorX, top: drawingBoxes[boxIDs.indexOf(touch.identifier)].anchorY});
+                    .offset({left: drawingBoxes[boxIDs.indexOf(touch.identifier)].anchorX, top: drawingBoxes[boxIDs.indexOf(touch.identifier)].anchorY})
+                    .attr("id", touch.timestamp);
 
                 // Take away the highlight behavior while the draw is
                 // happening.
@@ -158,11 +165,15 @@ var BoxesTouch = {
                 touch.target.movingBox = null;
             }else if (drawingBoxes[boxIDs.indexOf(touch.identifier)].drawingBox) {
                 console.log(drawingBoxes[boxIDs.indexOf(touch.identifier)].drawingBox)
+
                 drawingBoxes[boxIDs.indexOf(touch.identifier)].drawingBox
-                    //.touchend(BoxesTouch.unhighlight)
-                    .on("touchend", BoxesTouch.unhighlight)
-                    //.touchstart(BoxesTouch.startMove)
-                    .on("touchstart", BoxesTouch.startMove);
+                    .touchend(BoxesTouch.unhighlight)
+                    //.on("touchend", BoxesTouch.unhighlight)
+                    .touchstart(BoxesTouch.startMove)
+                    //.on("touchstart", BoxesTouch.startMove);
+                    .addEventListener("touchstart", BoxesTouch.startMove, false)
+                    .addEventListener("touchend", BoxesTouch.unhighlight, false);
+                //add event listeners to div instead of javascript object
                 drawingBoxes[boxIDs.indexOf(touch.identifier)].drawingBox = null;
                 console.log("TOUCH END!");
                 //for()
@@ -195,6 +206,7 @@ var BoxesTouch = {
      * Begins a box move sequence.
      */
     startMove: function (event) {
+        console.log(event);
         $.each(event.changedTouches, function (index, touch) {
             console.log(touch.target);
             // Highlight the element.
@@ -212,11 +224,34 @@ var BoxesTouch = {
             touch.target.deltaX = touch.pageX - startOffset.left;
             touch.target.deltaY = touch.pageY - startOffset.top;
         });
-
         // Eat up the event so that the drawing area does not
         // deal with it.
         event.stopPropagation();
-    }//,
+    },
+
+    newMove: function (event) {
+        console.log(event);
+        $.each(event.originalEvent.changedTouches, function (index, touch) {
+            console.log(touch.target);
+            // Highlight the element.
+            $(touch.target).addClass("box-highlight");
+
+            $("#trash-bin").addClass("trash-highlight");
+
+            // Take note of the box's current (global) location.
+            var jThis = $(touch.target),
+                startOffset = jThis.offset();
+
+            // Set the drawing area's state to indicate that it is
+            // in the middle of a move.
+            touch.target.movingBox = jThis;
+            touch.target.deltaX = touch.pageX - startOffset.left;
+            touch.target.deltaY = touch.pageY - startOffset.top;
+        });
+        // Eat up the event so that the drawing area does not
+        // deal with it.
+        event.stopPropagation();
+    }
 
     //createBox: function(event) {
     //    if(event.target = "#drawing-area"){
