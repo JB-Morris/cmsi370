@@ -1,0 +1,57 @@
+<!doctype html>
+
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Direct Manipulation on a Web Page</title>
+    <link rel="stylesheet" type="text/css" href="WidgetFromScratch.css"/>
+
+    <!-- Styles that are totally specific to this page. -->
+    <style>
+        #drawing-area {
+            border: 1px solid black;
+            width: 200px;
+            height: 200px;
+        }
+        #Bag {
+            /*float: right;*/
+            top: 5px;
+            right: 5px;
+            border: 1px solid black;
+            width: 200px;
+            height: 200px;
+
+        }
+        #item-spawn-zone {
+            height: 400px;
+        }
+
+    </style>
+</head>
+
+<body>
+<div id="item-spawn-zone">
+<div>Click to spawn item</div>
+<div id="drawing-area"></div>
+</div>
+
+<div id="Bag-Components">
+<div id="Bag" class="Bag-Component">Bag</div>
+<div class="Bag-Component">Items in bag:</div>
+<div id="counter" class="Bag-Component"></div>
+</div>
+
+<!-- Load up jQuery first. -->
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+<!-- Load up the controller code. -->
+<script src="WidgetFromScratch.js"></script>
+
+<!-- Code that is totally specific to this page. -->
+<script>
+    $(function () {
+        Items.setDrawingArea($("#drawing-area"));
+    });
+</script>
+</body>
+</html>
